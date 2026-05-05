@@ -14,7 +14,7 @@ export function StatBlock({ stats }: { stats: Stat[] }) {
     <ul className="grid gap-px overflow-hidden rounded-card-lg border border-line-dark bg-line-dark sm:grid-cols-2 lg:grid-cols-4">
       {stats.map((s) => (
         <li key={s.label} className="flex flex-col gap-3 bg-card p-7">
-          <p className="font-mono text-[44px] font-medium leading-[1] tracking-[-0.02em] text-accent sm:text-[56px]">
+          <p className="font-mono text-fluid-stat font-medium text-accent">
             {s.prefix}
             <CountUp to={s.value} decimals={s.decimals ?? 0} />
             {s.suffix}

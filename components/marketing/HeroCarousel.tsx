@@ -69,7 +69,7 @@ export function HeroCarousel() {
 
   return (
     <section
-      className="relative pb-20 pt-[120px] sm:pt-[160px] md:min-h-[760px] md:pb-24 md:pt-[200px]"
+      className="pt-hero pb-hero relative pb-20 pt-[120px] sm:pt-[160px] md:min-h-[760px] md:pb-24 md:pt-[200px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
@@ -131,7 +131,7 @@ export function HeroCarousel() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease, delay: 1.1 }}
-                  className="max-w-[560px] text-[16px] leading-[1.55] text-fg-mid sm:text-[18px] lg:text-[19px]"
+                  className="max-w-[560px] text-fluid-lead text-fg-mid"
                 >
                   {slide.sub}
                 </motion.p>

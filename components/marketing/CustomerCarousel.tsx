@@ -72,7 +72,7 @@ export function CustomerCarousel() {
 
       <div
         ref={scrollerRef}
-        className="no-scrollbar -mx-[clamp(20px,5vw,32px)] flex snap-x snap-mandatory gap-5 overflow-x-auto px-[clamp(20px,5vw,32px)] pb-2"
+        className="no-scrollbar overscroll-contain-x -mx-[clamp(20px,5vw,32px)] flex snap-x snap-mandatory gap-5 overflow-x-auto px-[clamp(20px,5vw,32px)] pb-2"
       >
         {CARDS.map((c, i) => (
           <article
@@ -88,7 +88,7 @@ export function CustomerCarousel() {
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand">
               {c.sector}
             </span>
-            <p className="mt-6 font-mono text-[52px] font-medium leading-[1] tracking-[-0.02em] text-fg-on-light sm:text-[72px] lg:text-[88px]">
+            <p className="mt-6 font-mono text-fluid-stat font-medium text-fg-on-light">
               {c.stat}
             </p>
             <h3 className="mt-6 text-[20px] font-semibold leading-[1.3] text-fg-on-light">

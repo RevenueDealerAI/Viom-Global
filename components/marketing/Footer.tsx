@@ -125,7 +125,10 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative border-t border-line-dark bg-ink pb-10 pt-16 sm:pt-20">
+    <footer
+      className="relative border-t border-line-dark bg-ink pt-16 sm:pt-20"
+      style={{ paddingBottom: "max(2.5rem, var(--safe-bottom))" }}
+    >
       <Container>
         <div className="grid gap-12 md:grid-cols-[1.4fr_2fr_1.4fr]">
           <div className="flex flex-col gap-5">

@@ -60,6 +60,7 @@ export function TopNav() {
             ? "border-b border-line-dark bg-ink/90 backdrop-blur-md"
             : "border-b border-transparent bg-transparent",
         )}
+        style={{ paddingTop: "var(--safe-top)" }}
       >
         <div className="mx-auto flex max-w-container items-center justify-between gap-4 px-[clamp(16px,5vw,32px)] py-[14px]">
           <Logo />
@@ -149,19 +150,27 @@ export function TopNav() {
           id="mobile-menu"
           aria-hidden={!open}
           className={cn(
-            "fixed inset-0 z-40 md:hidden",
+            "fixed inset-0 z-40 min-h-screen-safe overscroll-contain-y md:hidden",
             "transition-opacity duration-200 ease-out-expo",
             open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
           )}
           onClick={() => setOpen(false)}
+          style={{
+            WebkitBackdropFilter: "blur(12px)",
+            backdropFilter: "blur(12px)",
+          }}
         >
-          <div className="absolute inset-0 bg-ink/95 backdrop-blur-md" />
+          <div className="absolute inset-0 bg-ink/95" />
           <nav
             className={cn(
-              "relative flex h-full flex-col gap-1 px-[clamp(16px,5vw,32px)] pt-[88px] pb-10",
+              "relative flex h-full flex-col gap-1 px-[clamp(16px,5vw,32px)] pb-10",
               "transition-transform duration-300 ease-out-expo",
               open ? "translate-y-0" : "-translate-y-2",
             )}
+            style={{
+              paddingTop: "calc(88px + var(--safe-top))",
+              paddingBottom: "max(2.5rem, var(--safe-bottom))",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {NAV.map((item) => (

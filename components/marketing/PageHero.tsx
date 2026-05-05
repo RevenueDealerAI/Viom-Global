@@ -15,7 +15,7 @@ type Props = {
 
 export function PageHero({ eyebrow, accent, white, sub, primary, secondary, visual }: Props) {
   return (
-    <section className="relative pb-16 pt-[120px] sm:pb-20 sm:pt-[160px] md:pt-[180px]">
+    <section className="pt-hero pb-hero relative pb-16 pt-[120px] sm:pb-20 sm:pt-[160px] md:pt-[180px]">
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
@@ -31,7 +31,7 @@ export function PageHero({ eyebrow, accent, white, sub, primary, secondary, visu
                 <span className="acc">{accent}</span>
                 <span className="wht">{white}</span>
               </h1>
-              <p className="max-w-[560px] text-[16px] leading-[1.55] text-fg-mid sm:text-[18px] lg:text-[19px]">{sub}</p>
+              <p className="max-w-[560px] text-fluid-lead text-fg-mid">{sub}</p>
               <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
                 {primary && (
                   <Button

@@ -114,7 +114,7 @@ export function TabMatrix() {
       <div
         role="tablist"
         aria-label="Platform capabilities"
-        className="no-scrollbar -mx-[clamp(16px,5vw,32px)] flex gap-2 snap-x snap-mandatory overflow-x-auto scroll-smooth px-[clamp(16px,5vw,32px)] sm:mx-0 sm:px-0 sm:flex-wrap"
+        className="no-scrollbar overscroll-contain-x -mx-[clamp(16px,5vw,32px)] flex gap-2 snap-x snap-mandatory overflow-x-auto scroll-smooth px-[clamp(16px,5vw,32px)] sm:mx-0 sm:px-0 sm:flex-wrap"
       >
         {TABS.map((tab, i) => {
           const isActive = i === active;

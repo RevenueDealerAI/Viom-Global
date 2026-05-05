@@ -82,6 +82,7 @@ export function AIChatDemo() {
         <div
           className="overflow-hidden rounded-mockup border border-line-strong p-5 sm:p-6 md:p-8"
           style={{
+            WebkitBackdropFilter: "blur(24px) saturate(140%)",
             backdropFilter: "blur(24px) saturate(140%)",
             background: "rgba(19, 31, 27, 0.6)",
             boxShadow:

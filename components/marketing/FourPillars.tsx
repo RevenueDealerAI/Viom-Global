@@ -58,7 +58,7 @@ export function FourPillars() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-        className="grid gap-5 md:grid-cols-2 lg:grid-cols-4"
+        className="@container grid gap-5 @md:grid-cols-2 @4xl:grid-cols-4"
       >
         {PILLARS.map((p) => (
           <motion.li
@@ -74,7 +74,7 @@ export function FourPillars() {
               {p.eyebrow}
             </span>
 
-            <motion.div variants={verb} className="break-words text-[40px] font-semibold leading-[1.05] tracking-[-0.025em] text-fg sm:text-[44px] lg:text-[48px] xl:text-[52px]">
+            <motion.div variants={verb} className="break-words text-fluid-pillar font-semibold text-fg">
               {p.verb}
             </motion.div>
 

@@ -28,17 +28,88 @@
   --dur-base: 300ms;
   --dur-slow: 400ms;
 
-  --space-section: 140px;
-  --space-block: 64px;
-  --space-stack: 24px;
+  /* Fluid section / block / stack rhythm — also exposed as CSS vars
+     for any component that wants raw values. */
+  --space-section: clamp(4rem, 8vw, 11rem);
+  --space-block: clamp(2rem, 4vw, 4rem);
+  --space-stack: clamp(0.75rem, 1.5vw, 1.5rem);
+  --space-gutter: clamp(1rem, 4vw, 2rem);
+
+  /* Safe-area insets — fall back to 0 on browsers without env() */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
 }
 
-@media (max-width: 768px) {
-  :root {
-    --space-section: 80px;
-    --space-block: 40px;
-    --space-stack: 20px;
+/* === iOS Safari fixes ============================================ */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Prefer dvh on supporting browsers; falls back via the @supports rule below */
+  scroll-behavior: smooth;
+}
+
+/* No global tap highlight — use :active states intentionally instead. */
+*,
+*::before,
+*::after {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Form inputs MUST be ≥16px on iOS to prevent the focus zoom.
+   Using max() means a future utility class can never push below 16px
+   without explicitly opting out (e.g. on a non-mobile context). */
+input,
+textarea,
+select {
+  font-size: max(16px, 1rem);
+}
+
+/* Strip the native chrome from selects so iOS doesn't render a
+   rounded-rect with a chevron we can't restyle. */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%23A8B2AE' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 4.5l3 3 3-3'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 12px;
+  padding-right: 2.25rem;
+}
+
+/* Dynamic-viewport hero utility. Use on any element that should
+   match the live visible viewport on iOS (where 100vh includes the
+   address bar even when retracted). */
+.min-h-screen-safe {
+  min-height: 100vh; /* legacy fallback */
+}
+@supports (min-height: 100dvh) {
+  .min-h-screen-safe {
+    min-height: 100dvh;
   }
+}
+.h-screen-safe {
+  height: 100vh;
+}
+@supports (height: 100dvh) {
+  .h-screen-safe {
+    height: 100dvh;
+  }
+}
+
+/* Backdrop-filter prefix for Safari — Tailwind v3 doesn't auto-emit
+   -webkit-backdrop-filter, so we cascade it via attribute selectors
+   on every element that uses the `backdrop-blur-*` utility. */
+[class*="backdrop-blur"] {
+  -webkit-backdrop-filter: var(--tw-backdrop-blur);
+}
+
+/* Inputs use oklch() for the error tint. Provide a hex fallback for
+   any iOS < 15.4 user that slipped through. */
+.input-error {
+  border-color: #d87a5c;
+  border-color: oklch(0.65 0.12 30);
 }
 
 * {
@@ -71,6 +142,7 @@ body::before {
     linear-gradient(var(--color-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
   background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
 }
 
@@ -118,29 +190,31 @@ button {
 }
 
 /* ===================== TYPOGRAPHY UTILITIES ===================== */
+/* Fluid by default — clamp values mirror the Tailwind theme tokens
+   (`text-fluid-h1` etc.) so the legacy `.h1` / `.h2` classes keep working. */
 .h1 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(48px, 7.2vw, 96px);
+  font-size: clamp(2.75rem, 5.5vw + 1rem, 6rem);
   line-height: 1.02;
   letter-spacing: -0.025em;
 }
 .h2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(40px, 4.4vw, 56px);
+  font-size: clamp(2rem, 4vw + 0.75rem, 4.5rem);
   line-height: 1.06;
   letter-spacing: -0.022em;
 }
 .h3 {
   font-weight: 600;
-  font-size: clamp(26px, 2.6vw, 32px);
+  font-size: clamp(1.25rem, 1.5vw + 0.75rem, 2rem);
   line-height: 1.15;
   letter-spacing: -0.018em;
 }
 .h4 {
   font-weight: 600;
-  font-size: clamp(20px, 1.8vw, 22px);
+  font-size: clamp(1.125rem, 0.6vw + 0.9rem, 1.375rem);
   line-height: 1.25;
   letter-spacing: -0.012em;
 }
@@ -155,8 +229,22 @@ button {
   border-radius: 4px;
 }
 
+/* ===================== TAP / ACTIVE FEEDBACK ===================== */
+/* Replaces the gray flash with a subtle shrink so taps feel responsive
+   without leaving a stuck hover state. Scoped to elements that aren't
+   form fields (those have their own focus styles). */
+@media (hover: none) and (pointer: coarse) {
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transform: translateY(1px) scale(0.99);
+    transition: transform 80ms var(--ease-out-expo);
+  }
+}
+
 /* ===================== REDUCED MOTION ===================== */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *,
   *::before,
   *::after {
@@ -167,6 +255,26 @@ button {
   }
 }
 
-/* ===================== HIDE SCROLLBAR ===================== */
+/* ===================== SHORT-VIEWPORT HEROES ===================== */
+/* In landscape on phones the hero gets cramped. Trim its top padding
+   when the viewport is < 500px tall regardless of width. */
+@media (max-height: 500px) {
+  .pt-hero {
+    padding-top: 80px !important;
+  }
+  .pb-hero {
+    padding-bottom: 40px !important;
+  }
+}
+
+/* ===================== HORIZONTAL SCROLLERS ===================== */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Contain rubber-band overscroll inside snap-x carousels */
+.overscroll-contain-x {
+  overscroll-behavior-x: contain;
+}
+.overscroll-contain-y {
+  overscroll-behavior-y: contain;
+}

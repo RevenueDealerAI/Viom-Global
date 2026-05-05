@@ -26,7 +26,7 @@ export function CodeBlock({ language = "ts", code, className, filename }: Props)
           {filename ?? `${language}.ts`}
         </span>
       </div>
-      <pre className="overflow-x-auto p-5 font-mono text-[13.5px] leading-[1.6] text-fg-mid">
+      <pre className="overscroll-contain-x overflow-x-auto p-5 font-mono text-[13.5px] leading-[1.6] text-fg-mid">
         <code>{highlight(code)}</code>
       </pre>
     </div>

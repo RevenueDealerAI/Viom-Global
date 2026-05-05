@@ -10,7 +10,10 @@ export function StickyChips() {
   if (pathname === "/book-call") return null;
 
   return (
-    <div className="fixed right-4 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
+    <div
+      className="fixed top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-3 lg:flex"
+      style={{ right: "max(1rem, var(--safe-right))" }}
+    >
       <Link
         href="/contact"
         className={cn(
