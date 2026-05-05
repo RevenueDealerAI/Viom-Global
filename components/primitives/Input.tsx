@@ -37,7 +37,8 @@ export function Input({
   const [focused, setFocused] = useState(false);
 
   const fieldBase = cn(
-    "w-full rounded-[6px] bg-elev/60 border px-4 py-[12px] text-[15px] text-fg",
+    "w-full rounded-[6px] bg-elev/60 border px-4 py-[14px] text-[16px] sm:py-[12px] sm:text-[15px] text-fg",
+    "min-h-[48px] sm:min-h-0",
     "placeholder:text-fg-low",
     "transition-[border-color,box-shadow] duration-[180ms] ease-out-expo",
     "outline-none",

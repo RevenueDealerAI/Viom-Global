@@ -50,7 +50,7 @@ export default function LlmPage() {
         sub="Domain-tuned LLM copilots that ship in weeks, not quarters. Your data, your guardrails, your model choice."
         primary={{ label: "Book AI Consultation", href: "/book-call" }}
         secondary={{ label: "Read the SDK docs", href: "/contact" }}
-        visual={<NeuralLattice size={460} />}
+        visual={<NeuralLattice fluid />}
       />
 
       <Section tone="dark">

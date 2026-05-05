@@ -12,30 +12,32 @@ export function Centerpiece() {
         </h2>
       </Reveal>
 
-      <div className="relative mx-auto mt-14 grid h-[520px] w-full max-w-[760px] place-items-center md:h-[640px] lg:h-[720px]">
-        {/* corner labels */}
-        <span className="pointer-events-none absolute left-0 top-0 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low">
+      <div className="relative mx-auto mt-10 grid aspect-square w-full max-w-[680px] place-items-center sm:mt-14 lg:h-[720px] lg:w-[720px] lg:max-w-none">
+        {/* corner labels — top pair shown from sm, bottom pair from lg */}
+        <span className="pointer-events-none absolute left-0 top-0 hidden items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low sm:inline-flex">
           <span className="h-px w-5 bg-accent" />
           ENTERPRISE
         </span>
-        <span className="pointer-events-none absolute right-0 top-0 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low">
+        <span className="pointer-events-none absolute right-0 top-0 hidden items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low sm:inline-flex">
           AI-NATIVE
           <span className="h-px w-5 bg-accent" />
         </span>
-        <span className="pointer-events-none absolute bottom-0 left-0 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low">
+        <span className="pointer-events-none absolute bottom-0 left-0 hidden items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low lg:inline-flex">
           <span className="h-px w-5 bg-accent" />
           GOVERNED
         </span>
-        <span className="pointer-events-none absolute bottom-0 right-0 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low">
+        <span className="pointer-events-none absolute bottom-0 right-0 hidden items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low lg:inline-flex">
           OBSERVABLE
           <span className="h-px w-5 bg-accent" />
         </span>
 
-        <NeuralLattice size={680} />
+        <div className="absolute inset-4 sm:inset-6 lg:inset-0">
+          <NeuralLattice fluid />
+        </div>
 
         {/* center capsule */}
-        <div className="pointer-events-none absolute inset-0 grid place-items-center">
-          <div className="rounded-pill border border-accent/60 bg-elev/80 px-6 py-3 font-mono text-[13.5px] text-fg backdrop-blur-md sm:text-[14px]">
+        <div className="pointer-events-none absolute inset-0 grid place-items-center px-4">
+          <div className="max-w-full rounded-[24px] border border-accent/60 bg-elev/85 px-4 py-3 text-center font-mono text-[11px] leading-[1.4] text-fg backdrop-blur-md sm:rounded-pill sm:px-6 sm:text-[13.5px] sm:leading-[1] lg:text-[14px]">
             Automation + Intelligence + Workflows + Trust
           </div>
         </div>

@@ -21,8 +21,8 @@ export function Chip({
     return (
       <button
         className={cn(
-          "group inline-flex items-center gap-[10px] rounded-pill border border-line-light bg-paper px-5 py-[10px]",
-          "text-[14px] font-medium text-fg-on-light",
+          "group inline-flex min-h-[44px] items-center justify-center gap-[8px] rounded-pill border border-line-light bg-paper px-3 py-[10px] sm:gap-[10px] sm:px-5",
+          "text-[13px] font-medium text-fg-on-light sm:text-[14px]",
           "transition-[background,border-color,color,transform] duration-200 ease-out-expo",
           "hover:bg-brand hover:border-brand hover:text-paper hover:-translate-y-[1px]",
           className,

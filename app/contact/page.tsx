@@ -100,7 +100,12 @@ export default function ContactPage() {
                   <p className="font-mono text-[12.5px] text-[oklch(0.65_0.12_30)]">{error}</p>
                 )}
                 <div className="pt-2">
-                  <Button type="submit" variant="primary" arrow>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    arrow
+                    className="w-full justify-center sm:w-auto"
+                  >
                     {busy ? "Sending…" : "Send message"}
                   </Button>
                 </div>

@@ -110,10 +110,11 @@ export function TabMatrix() {
       </div>
 
       {/* tab pills */}
+      <div className="relative mb-10 sm:after:hidden after:pointer-events-none after:absolute after:inset-y-0 after:right-0 after:w-12 after:bg-gradient-to-l after:from-ink after:to-transparent">
       <div
         role="tablist"
         aria-label="Platform capabilities"
-        className="no-scrollbar -mx-2 mb-10 flex gap-2 overflow-x-auto scroll-smooth px-2 sm:flex-wrap"
+        className="no-scrollbar -mx-[clamp(16px,5vw,32px)] flex gap-2 snap-x snap-mandatory overflow-x-auto scroll-smooth px-[clamp(16px,5vw,32px)] sm:mx-0 sm:px-0 sm:flex-wrap"
       >
         {TABS.map((tab, i) => {
           const isActive = i === active;
@@ -124,7 +125,8 @@ export function TabMatrix() {
               aria-selected={isActive}
               onClick={() => setActive(i)}
               className={cn(
-                "relative shrink-0 rounded-pill border px-5 py-[10px] text-[13.5px] font-medium transition-colors duration-200",
+                "relative shrink-0 snap-start rounded-pill border px-5 py-[12px] text-[13.5px] font-medium transition-colors duration-200 sm:py-[10px]",
+                "min-h-[44px]",
                 isActive
                   ? "border-transparent text-ink"
                   : "border-line-strong text-fg-mid hover:border-line-strong/80 hover:text-fg",
@@ -141,6 +143,7 @@ export function TabMatrix() {
             </button>
           );
         })}
+      </div>
       </div>
 
       <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
@@ -166,7 +169,11 @@ export function TabMatrix() {
               ))}
             </ul>
             <div className="pt-2">
-              <Button href={T.cta.href} variant="primary">
+              <Button
+                href={T.cta.href}
+                variant="primary"
+                className="w-full justify-center sm:w-auto"
+              >
                 {T.cta.label}
               </Button>
             </div>

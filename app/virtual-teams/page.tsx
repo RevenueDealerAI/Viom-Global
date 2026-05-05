@@ -40,7 +40,7 @@ export default function VirtualTeamsPage() {
         sub="Vetted AI, ML, and prompt engineers — embedded into your team in under 14 days. Calibrated to your stack, your review process, your standup."
         primary={{ label: "Get Profiles", href: "/book-call" }}
         secondary={{ label: "How calibration works", href: "/contact" }}
-        visual={<NeuralLattice size={460} />}
+        visual={<NeuralLattice fluid />}
       />
 
       <Section tone="dark">

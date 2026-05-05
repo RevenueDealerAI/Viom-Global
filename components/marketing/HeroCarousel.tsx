@@ -69,7 +69,7 @@ export function HeroCarousel() {
 
   return (
     <section
-      className="relative pb-24 pt-[180px] md:min-h-[760px] md:pt-[200px]"
+      className="relative pb-20 pt-[120px] sm:pt-[160px] md:min-h-[760px] md:pb-24 md:pt-[200px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
@@ -131,7 +131,7 @@ export function HeroCarousel() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease, delay: 1.1 }}
-                  className="max-w-[560px] text-[19px] leading-[1.55] text-fg-mid"
+                  className="max-w-[560px] text-[16px] leading-[1.55] text-fg-mid sm:text-[18px] lg:text-[19px]"
                 >
                   {slide.sub}
                 </motion.p>
@@ -140,12 +140,20 @@ export function HeroCarousel() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, ease, delay: 1.35 }}
-                  className="flex flex-wrap items-center gap-3"
+                  className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
                 >
-                  <Button href={slide.primary.href} variant="primary">
+                  <Button
+                    href={slide.primary.href}
+                    variant="primary"
+                    className="w-full justify-center sm:w-auto"
+                  >
                     {slide.primary.label}
                   </Button>
-                  <Button href={slide.secondary.href} variant="secondary">
+                  <Button
+                    href={slide.secondary.href}
+                    variant="secondary"
+                    className="w-full justify-center sm:w-auto"
+                  >
                     {slide.secondary.label}
                   </Button>
                 </motion.div>
@@ -154,18 +162,18 @@ export function HeroCarousel() {
           </div>
 
           {/* lattice */}
-          <div className="relative mx-auto h-[360px] w-[360px] sm:h-[440px] sm:w-[440px] lg:h-[520px] lg:w-[520px]">
-            <NeuralLattice size={520} />
+          <div className="relative mx-auto aspect-square w-full max-w-[300px] sm:max-w-[440px] lg:h-[520px] lg:w-[520px] lg:max-w-none">
+            <NeuralLattice fluid />
           </div>
         </div>
 
         {/* indicator + pause */}
-        <div className="mt-12 flex items-center gap-4">
+        <div className="mt-10 flex flex-wrap items-center gap-3 sm:mt-12 sm:gap-4">
           <button
             onClick={() => setPaused((v) => !v)}
             aria-pressed={paused}
             aria-label={paused ? "Play carousel" : "Pause carousel"}
-            className="grid h-9 w-9 place-items-center rounded-full border border-line-strong text-fg-mid transition-colors hover:border-accent hover:text-fg"
+            className="grid h-11 w-11 place-items-center rounded-full border border-line-strong text-fg-mid transition-colors hover:border-accent hover:text-fg sm:h-9 sm:w-9"
           >
             {paused ? <Play size={13} /> : <Pause size={13} />}
           </button>
@@ -176,14 +184,20 @@ export function HeroCarousel() {
                 onClick={() => setIdx(i)}
                 aria-label={`Slide ${i + 1}`}
                 aria-current={i === idx}
-                className={cn(
-                  "h-[6px] rounded-full transition-all duration-300 ease-out-expo",
-                  i === idx ? "w-10 bg-signal shadow-[0_0_8px_var(--color-signal)]" : "w-2 bg-fg-low/50 hover:bg-fg-mid",
-                )}
-              />
+                className="grid h-11 place-items-center px-1 sm:h-auto sm:px-0"
+              >
+                <span
+                  className={cn(
+                    "h-[6px] rounded-full transition-all duration-300 ease-out-expo",
+                    i === idx
+                      ? "w-10 bg-signal shadow-[0_0_8px_var(--color-signal)]"
+                      : "w-2 bg-fg-low/50 hover:bg-fg-mid",
+                  )}
+                />
+              </button>
             ))}
           </div>
-          <span className="ml-2 font-mono text-[11px] uppercase tracking-[0.14em] text-fg-low">
+          <span className="ml-1 font-mono text-[11px] uppercase tracking-[0.14em] text-fg-low sm:ml-2">
             // 0{idx + 1} / 0{SLIDES.length}
           </span>
         </div>

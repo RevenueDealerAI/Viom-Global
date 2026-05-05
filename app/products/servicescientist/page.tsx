@@ -53,7 +53,7 @@ export default function ServiceScientistPage() {
         sub="Built natively by Viom, ServiceScientist plays nicely with the systems you already pay for — including your existing ServiceNow estate as a credibility signal of how we integrate, not a dependency."
         primary={{ label: "Book Demo", href: "/book-call" }}
         secondary={{ label: "Architecture brief", href: "/contact" }}
-        visual={<NeuralLattice size={440} />}
+        visual={<NeuralLattice fluid />}
       />
 
       <Section tone="dark">

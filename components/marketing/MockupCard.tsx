@@ -4,14 +4,14 @@ import { CodeBlock } from "../primitives/CodeBlock";
 export function MockupAutomation() {
   return (
     <Card variant="mockup" className="overflow-hidden">
-      <div className="flex items-center justify-between border-b border-line-dark px-5 py-3 font-mono text-[11px] uppercase tracking-[0.14em] text-fg-mid">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line-dark px-4 py-3 font-mono text-[11px] uppercase tracking-[0.14em] text-fg-mid sm:px-5">
         <span className="inline-flex items-center gap-2">
           <span className="h-[6px] w-[6px] rounded-full bg-signal" />
           Incident · summarized by AI
         </span>
         <span className="text-fg-low">14:02:41 UTC</span>
       </div>
-      <div className="flex flex-col gap-3 p-6">
+      <div className="flex flex-col gap-3 p-5 sm:p-6">
         <div className="rounded-card border border-line-dark bg-elev/60 p-4">
           <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-fg-low">User</p>
           <p className="mt-1 text-[14.5px] text-fg">Why is checkout failing in eu-west-1?</p>

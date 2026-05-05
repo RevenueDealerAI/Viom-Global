@@ -80,7 +80,7 @@ export function AIChatDemo() {
           style={{ background: "radial-gradient(circle, rgba(74,222,128,0.25), transparent 70%)" }}
         />
         <div
-          className="rounded-mockup border border-line-strong p-6 md:p-8"
+          className="overflow-hidden rounded-mockup border border-line-strong p-5 sm:p-6 md:p-8"
           style={{
             backdropFilter: "blur(24px) saturate(140%)",
             background: "rgba(19, 31, 27, 0.6)",
@@ -88,7 +88,7 @@ export function AIChatDemo() {
               "inset 0 1px 0 rgba(255,255,255,0.04), 0 30px 100px -40px rgba(0,255,163,0.25)",
           }}
         >
-          <div className="mb-5 flex items-center justify-between border-b border-line-dark pb-4">
+          <div className="mb-5 flex flex-col gap-2 border-b border-line-dark pb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
             <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-fg-mid">
               <span className="h-[6px] w-[6px] rounded-full bg-signal" style={{ animation: "pulse-dot 2s var(--ease-out-expo) infinite" }} />
               Viom Copilot · live
@@ -106,7 +106,7 @@ export function AIChatDemo() {
 
           <div className="border-t border-line-dark pt-5">
             <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">response</span>
-            <pre className="mt-2 whitespace-pre-wrap break-words font-mono text-[13.5px] leading-[1.7] text-fg">
+            <pre className="mt-2 max-w-full overflow-x-auto whitespace-pre-wrap break-words font-mono text-[12.5px] leading-[1.7] text-fg sm:text-[13.5px]">
               {typed}
               <span
                 className="ml-[1px] inline-block h-[14px] w-[7px] translate-y-[2px] bg-signal"
@@ -116,18 +116,25 @@ export function AIChatDemo() {
             </pre>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-line-dark pt-5">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-signal">
-              <Check size={12} /> grounded in your KB
-            </span>
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-signal">
-              <Check size={12} /> PII redacted
-            </span>
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-signal">
-              <Check size={12} /> audit-logged
-            </span>
-            <div className="ml-auto">
-              <Button href="/book-call" variant="primary" size="sm">
+          <div className="mt-6 flex flex-col gap-4 border-t border-line-dark pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+            <div className="flex flex-wrap gap-x-4 gap-y-2">
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-signal">
+                <Check size={12} /> grounded in your KB
+              </span>
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-signal">
+                <Check size={12} /> PII redacted
+              </span>
+              <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-signal">
+                <Check size={12} /> audit-logged
+              </span>
+            </div>
+            <div className="sm:ml-auto">
+              <Button
+                href="/book-call"
+                variant="primary"
+                size="sm"
+                className="w-full justify-center sm:w-auto"
+              >
                 Try it yourself
               </Button>
             </div>

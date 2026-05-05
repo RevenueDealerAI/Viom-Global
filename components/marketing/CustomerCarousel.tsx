@@ -56,14 +56,14 @@ export function CustomerCarousel() {
           <button
             onClick={() => scrollTo(Math.max(0, active - 1))}
             aria-label="Previous"
-            className="grid h-10 w-10 place-items-center rounded-full border border-line-light bg-paper text-fg-on-light transition-colors hover:border-brand hover:text-brand"
+            className="grid h-11 w-11 place-items-center rounded-full border border-line-light bg-paper text-fg-on-light transition-colors hover:border-brand hover:text-brand"
           >
             <ChevronLeft size={16} />
           </button>
           <button
             onClick={() => scrollTo(Math.min(CARDS.length - 1, active + 1))}
             aria-label="Next"
-            className="grid h-10 w-10 place-items-center rounded-full border border-line-light bg-paper text-fg-on-light transition-colors hover:border-brand hover:text-brand"
+            className="grid h-11 w-11 place-items-center rounded-full border border-line-light bg-paper text-fg-on-light transition-colors hover:border-brand hover:text-brand"
           >
             <ChevronRight size={16} />
           </button>
@@ -88,7 +88,7 @@ export function CustomerCarousel() {
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand">
               {c.sector}
             </span>
-            <p className="mt-6 font-mono text-[64px] font-medium leading-[1] tracking-[-0.02em] text-fg-on-light sm:text-[88px]">
+            <p className="mt-6 font-mono text-[52px] font-medium leading-[1] tracking-[-0.02em] text-fg-on-light sm:text-[72px] lg:text-[88px]">
               {c.stat}
             </p>
             <h3 className="mt-6 text-[20px] font-semibold leading-[1.3] text-fg-on-light">
@@ -109,18 +109,40 @@ export function CustomerCarousel() {
         ))}
       </div>
 
-      <div className="mt-6 flex items-center gap-2">
-        {CARDS.map((_, i) => (
+      <div className="mt-6 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          {CARDS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              aria-label={`Go to story ${i + 1}`}
+              className="grid h-11 place-items-center px-1"
+            >
+              <span
+                className={cn(
+                  "h-[5px] rounded-full transition-all duration-200",
+                  i === active ? "w-8 bg-brand" : "w-2 bg-line-light",
+                )}
+              />
+            </button>
+          ))}
+        </div>
+        <div className="flex gap-2 sm:hidden">
           <button
-            key={i}
-            onClick={() => scrollTo(i)}
-            aria-label={`Go to story ${i + 1}`}
-            className={cn(
-              "h-[5px] rounded-full transition-all duration-200",
-              i === active ? "w-8 bg-brand" : "w-2 bg-line-light",
-            )}
-          />
-        ))}
+            onClick={() => scrollTo(Math.max(0, active - 1))}
+            aria-label="Previous"
+            className="grid h-11 w-11 place-items-center rounded-full border border-line-light bg-paper text-fg-on-light transition-colors hover:border-brand hover:text-brand"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            onClick={() => scrollTo(Math.min(CARDS.length - 1, active + 1))}
+            aria-label="Next"
+            className="grid h-11 w-11 place-items-center rounded-full border border-line-light bg-paper text-fg-on-light transition-colors hover:border-brand hover:text-brand"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
       </div>
     </Container>
   );

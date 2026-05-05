@@ -48,35 +48,45 @@ export function IndustryGrid() {
       </Reveal>
 
       <Reveal delay={0.05}>
-        <div className="mt-12 flex flex-col gap-3">
-          <div className="flex flex-wrap gap-3">
-            {ROW_1.map(({ label, Icon }) => (
+        {/* Mobile + tablet: single grid of all 12 chips. md: switches to two flex-wrap rows. */}
+        <div className="mt-10 lg:mt-12">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 md:hidden">
+            {[...ROW_1, ...ROW_2].map(({ label, Icon }) => (
               <Chip key={label} variant="industry" icon={<Icon size={15} strokeWidth={1.5} />}>
                 {label}
               </Chip>
             ))}
           </div>
-          <div className="flex flex-wrap gap-3">
-            {ROW_2.map(({ label, Icon }) => (
-              <Chip key={label} variant="industry" icon={<Icon size={15} strokeWidth={1.5} />}>
-                {label}
-              </Chip>
-            ))}
+          <div className="hidden flex-col gap-3 md:flex">
+            <div className="flex flex-wrap gap-3">
+              {ROW_1.map(({ label, Icon }) => (
+                <Chip key={label} variant="industry" icon={<Icon size={15} strokeWidth={1.5} />}>
+                  {label}
+                </Chip>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {ROW_2.map(({ label, Icon }) => (
+                <Chip key={label} variant="industry" icon={<Icon size={15} strokeWidth={1.5} />}>
+                  {label}
+                </Chip>
+              ))}
+            </div>
           </div>
         </div>
       </Reveal>
 
-      <div className="mt-20 flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div className="mt-14 flex flex-col items-start gap-6 sm:mt-20 lg:flex-row lg:items-end lg:justify-between">
         <Reveal>
           <h3 className="h3 max-w-[560px] text-fg-on-light">
             When our customers work, the world works.
           </h3>
         </Reveal>
-        <Reveal delay={0.05}>
+        <Reveal delay={0.05} className="w-full sm:w-auto">
           <Button
             href="/#customers"
             variant="primary"
-            className="!bg-fg-on-light !text-cream shadow-none hover:!bg-fg-on-light/90"
+            className="!bg-fg-on-light !text-cream shadow-none hover:!bg-fg-on-light/90 w-full justify-center sm:w-auto"
           >
             See all customer stories
           </Button>

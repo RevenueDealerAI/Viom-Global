@@ -55,7 +55,7 @@ export default function AiAutomationPage() {
         sub="Automate the workflows that run your business — from incident response to claims to reconciliation. Your systems, governed end to end."
         primary={{ label: "Book Automation Demo", href: "/book-call" }}
         secondary={{ label: "See Customer Stories", href: "/#customers" }}
-        visual={<NeuralLattice size={480} />}
+        visual={<NeuralLattice fluid />}
       />
 
       <Section tone="dark">

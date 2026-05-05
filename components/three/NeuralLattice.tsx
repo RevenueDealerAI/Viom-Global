@@ -15,6 +15,8 @@ type Props = {
   size?: number;
   className?: string;
   ambient?: boolean;
+  /** When true, the wrapper fills its parent and ignores the `size` prop. */
+  fluid?: boolean;
 };
 
 function Poster() {
@@ -29,7 +31,7 @@ function Poster() {
   );
 }
 
-export function NeuralLattice({ size = 520, className, ambient }: Props) {
+export function NeuralLattice({ size = 520, className, ambient, fluid }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
   const [mobile, setMobile] = useState(false);
@@ -50,9 +52,10 @@ export function NeuralLattice({ size = 520, className, ambient }: Props) {
   return (
     <div
       ref={containerRef}
-      style={{ width: size, height: size, maxWidth: "100%" }}
+      style={fluid ? undefined : { width: size, height: size, maxWidth: "100%" }}
       className={cn(
         "relative",
+        fluid && "h-full w-full",
         ambient && "pointer-events-none opacity-[0.18]",
         className,
       )}

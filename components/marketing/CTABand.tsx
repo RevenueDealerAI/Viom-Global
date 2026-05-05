@@ -18,7 +18,7 @@ export function CTABand({
 }: Props) {
   return (
     <Container>
-      <div className="relative isolate overflow-hidden rounded-card-lg border border-line-strong bg-elev px-6 py-20 md:px-16 md:py-28">
+      <div className="relative isolate overflow-hidden rounded-card-lg border border-line-strong bg-elev px-5 py-14 sm:px-8 sm:py-20 md:px-16 md:py-28">
         <div className="pointer-events-none absolute right-0 top-1/2 -z-10 -translate-y-1/2 translate-x-[20%] opacity-30">
           <NeuralLattice size={520} ambient />
         </div>
@@ -36,15 +36,23 @@ export function CTABand({
           </h2>
         </Reveal>
         <Reveal delay={0.06}>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button href={primary.href} variant="primary">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Button
+              href={primary.href}
+              variant="primary"
+              className="w-full justify-center sm:w-auto"
+            >
               {primary.label}
             </Button>
-            <Button href={secondary.href} variant="secondary">
+            <Button
+              href={secondary.href}
+              variant="secondary"
+              className="w-full justify-center sm:w-auto"
+            >
               {secondary.label}
             </Button>
           </div>
-          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-low">
+          <p className="mt-6 font-mono text-[12px] uppercase tracking-[0.18em] text-fg-low sm:text-[11px]">
             // avg. response time: under 2 hours
           </p>
         </Reveal>

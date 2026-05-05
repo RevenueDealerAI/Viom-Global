@@ -46,7 +46,7 @@ export function FourPillars() {
 
   return (
     <Container>
-      <div className="mb-16 max-w-[920px]">
+      <div className="mb-10 max-w-[920px] sm:mb-16">
         <h2 className="h2">
           <span className="acc">Bring autonomous workflows</span>
           <span className="wht">to every corner of your business.</span>
@@ -64,7 +64,7 @@ export function FourPillars() {
           <motion.li
             variants={child}
             key={p.eyebrow}
-            className="group relative flex flex-col gap-5 rounded-card-lg border border-line-dark bg-card p-7 transition-[border-color,transform] duration-300 ease-out-expo hover:-translate-y-[2px] hover:border-accent/40"
+            className="group relative flex flex-col gap-5 rounded-card-lg border border-line-dark bg-card p-6 transition-[border-color,transform] duration-300 ease-out-expo hover:-translate-y-[2px] hover:border-accent/40 sm:p-7"
           >
             <span className="inline-flex items-center gap-[10px] font-mono text-[11px] uppercase tracking-[0.16em] text-fg-mid">
               <span
