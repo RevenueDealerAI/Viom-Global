@@ -1,2 +1,0 @@
-# Viom Global
-

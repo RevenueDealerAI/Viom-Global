@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #0A1614;
+  --color-elev: #0F1B18;
+  --color-card: #131F1B;
+  --color-card-2: #172925;
+  --color-cream: #FAFAF7;
+  --color-paper: #FFFFFF;
+  --color-brand: #0B5F4A;
+  --color-accent: #4ADE80;
+  --color-signal: #00FFA3;
+  --color-fg: #F2F5F3;
+  --color-fg-mid: #A8B2AE;
+  --color-fg-low: #5C6660;
+  --color-fg-on-light: #0A1614;
+  --color-line-dark: rgba(255, 255, 255, 0.06);
+  --color-line-strong: rgba(255, 255, 255, 0.10);
+  --color-line-light: rgba(10, 22, 20, 0.08);
+  --color-grid: rgba(255, 255, 255, 0.025);
+  --color-glow: rgba(74, 222, 128, 0.4);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 180ms;
+  --dur-base: 300ms;
+  --dur-slow: 400ms;
+
+  --space-section: 140px;
+  --space-block: 64px;
+  --space-stack: 24px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-section: 80px;
+    --space-block: 40px;
+    --space-stack: 20px;
+  }
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: -0.003em;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ===================== KEYFRAMES ===================== */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1.0; transform: scale(1.15); }
+}
+
+@keyframes blink-cursor {
+  0%, 49.999% { opacity: 1; }
+  50%, 100%   { opacity: 0; }
+}
+
+@keyframes mesh-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(2%, -1%) scale(1.04); }
+}
+
+@keyframes scan-line {
+  0%   { top: 0%; opacity: 0; }
+  10%  { opacity: 0.45; }
+  90%  { opacity: 0.45; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes float-y {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+/* ===================== TYPOGRAPHY UTILITIES ===================== */
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(48px, 7.2vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 4.4vw, 56px);
+  line-height: 1.06;
+  letter-spacing: -0.022em;
+}
+.h3 {
+  font-weight: 600;
+  font-size: clamp(26px, 2.6vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+}
+.h4 {
+  font-weight: 600;
+  font-size: clamp(20px, 1.8vw, 22px);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+}
+.acc { color: var(--color-accent); display: block; }
+.wht { color: var(--color-fg); display: block; }
+.ink { color: var(--color-fg-on-light); display: block; }
+
+/* ===================== FOCUS ===================== */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ===================== REDUCED MOTION ===================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===================== HIDE SCROLLBAR ===================== */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
